@@ -20,9 +20,9 @@
     >
       <div class="flex justify-around">
         <router-link
-          to="/"
+          to="/home"
           class="flex flex-col items-center py-2 px-4"
-          :class="{ 'text-yellow-500': currentRoute === '/home' }"
+          :class="{ 'text-yellow-500': currentRoute === '/' }"
         >
           <LayoutListIcon class="w-6 h-6" />
           <span class="text-xs mt-1">题库</span>

@@ -81,7 +81,7 @@
 
         <div class="mt-6 flex justify-center space-x-8">
           <button class="p-2 rounded-full border border-gray-200">
-            <WheatIcon class="w-6 h-6 text-green-500" />
+            <img src="../assets/images/QQ.png" class="w-6 h-6" alt="QQ" />
           </button>
           <button class="p-2 rounded-full border border-gray-200">
             <Github class="w-6 h-6" />
@@ -91,11 +91,10 @@
     </div>
   </div>
 </template>
-g
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { PhoneIcon, KeyIcon, WheatIcon, Github } from 'lucide-vue-next'
+import { PhoneIcon, KeyIcon, Github } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
