@@ -62,8 +62,8 @@ const categories = [
   { id: 'backend', name: '后端' },
   { id: 'frontend', name: '前端' },
   { id: 'java', name: 'Java' },
-  { id: 'cpp', name: 'C++' },
-  { id: 'python', name: 'Python' },
+  { id: 'cpp', name: '高数' },
+  { id: 'python', name: '线代' },
   { id: 'go', name: 'Go' },
 ]
 
