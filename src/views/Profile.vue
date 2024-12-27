@@ -6,7 +6,7 @@
         <div class="w-16 h-16 bg-gray-200 rounded-full"></div>
         <div>
           <h2 class="text-lg font-medium">学习鸡1672</h2>
-          <p class="text-sm text-gray-500">普通用户</p>
+          <p class="text-sm text-gray-500">再坚持一下</p>
         </div>
       </div>
     </div>
@@ -28,15 +28,12 @@
 
     <!-- Share Button -->
     <div class="px-4 mt-8">
-      <button class="w-full bg-yellow-500 text-white py-3 rounded-lg font-medium">
-        分享给朋友
-      </button>
+      <button class="w-full bg-yellow-500 text-white py-3 rounded-lg font-medium">登出</button>
     </div>
 
     <!-- Footer Links -->
     <div class="mt-4 text-center text-sm text-gray-500">
-      <p>学习鸡网页刷题：mianshiya.com</p>
-      <p>JetBrains IDE 刷题插件</p>
+      <p>Powered by TIC313</p>
     </div>
   </div>
 </template>
@@ -52,10 +49,10 @@ import {
 } from 'lucide-vue-next'
 
 const menuItems = [
-  { id: 1, title: '会员', icon: DiamondIcon },
-  { id: 2, title: '题目收藏', icon: BookmarkIcon },
-  { id: 3, title: '刷题记录', icon: EyeIcon },
-  { id: 4, title: '求职交流', icon: MessageSquareIcon },
-  { id: 5, title: '刷题设置', icon: SettingsIcon },
+  { id: 1, title: '账号', icon: DiamondIcon },
+  { id: 2, title: '路线记录', icon: BookmarkIcon },
+  { id: 3, title: '学习记录', icon: EyeIcon },
+  { id: 4, title: '交流论坛', icon: MessageSquareIcon },
+  { id: 5, title: '设置', icon: SettingsIcon },
 ]
 </script>

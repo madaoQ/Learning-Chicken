@@ -8,7 +8,7 @@
         />
         <input
           type="text"
-          placeholder="搜索面试题"
+          placeholder="搜索资料"
           class="w-full pl-10 pr-4 py-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-500"
         />
       </div>

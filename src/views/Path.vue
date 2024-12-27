@@ -10,7 +10,7 @@
           class="pb-2 transition-colors duration-200"
           @click="selectedPath = path.id"
         >
-          {{ path.name }}刷题路线
+          {{ path.name }}学习路线
         </button>
       </div>
     </div>
@@ -59,9 +59,7 @@ const chatArea = ref<HTMLElement | null>(null)
 
 const selectedPath = ref('java')
 const userInput = ref('')
-const messages = ref([
-  { content: 'Welcome! How can I help you with your coding journey?', isUser: false },
-])
+const messages = ref([{ content: '让我来帮你规划学习路线吧，想学习些什么？', isUser: false }])
 
 const paths = [
   { id: 'java', name: 'Java' },
@@ -81,7 +79,7 @@ const sendMessage = async () => {
   // Simulate AI response using Promise for better async handling
   await new Promise((resolve) =>
     setTimeout(() => {
-      const aiResponse = `Here's some information about the ${selectedPath.value} path: ...`
+      const aiResponse = `这是我提供的关于 ${selectedPath.value} 学习路线推荐: ...`
       messages.value.push({ content: aiResponse, isUser: false })
       resolve(null)
     }, 1000),
