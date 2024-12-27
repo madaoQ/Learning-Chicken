@@ -5,7 +5,7 @@
       <div class="flex items-center space-x-4">
         <div class="w-16 h-16 bg-gray-200 rounded-full"></div>
         <div>
-          <h2 class="text-lg font-medium">面试鸭1672</h2>
+          <h2 class="text-lg font-medium">学习鸡1672</h2>
           <p class="text-sm text-gray-500">普通用户</p>
         </div>
       </div>
@@ -35,7 +35,7 @@
 
     <!-- Footer Links -->
     <div class="mt-4 text-center text-sm text-gray-500">
-      <p>面试鸭网页刷题：mianshiya.com</p>
+      <p>学习鸡网页刷题：mianshiya.com</p>
       <p>JetBrains IDE 刷题插件</p>
     </div>
   </div>

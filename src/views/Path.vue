@@ -1,13 +1,13 @@
 <template>
-  <div class="pb-16">
+  <div class="flex flex-col flex-grow bg-gray-100">
     <!-- Path Categories -->
-    <div class="overflow-x-auto whitespace-nowrap px-4 mb-4 border-b">
+    <div class="overflow-x-auto whitespace-nowrap px-4 py-2 bg-white shadow-sm">
       <div class="inline-flex space-x-4">
         <button
           v-for="path in paths"
           :key="path.id"
-          :class="{ 'text-yellow-500 border-b-2 border-yellow-500': selectedPath === path.id }"
-          class="pb-2"
+          :class="{ 'text-blue-600 border-b-2 border-blue-600': selectedPath === path.id }"
+          class="pb-2 transition-colors duration-200"
           @click="selectedPath = path.id"
         >
           {{ path.name }}刷题路线
@@ -15,28 +15,53 @@
       </div>
     </div>
 
-    <!-- Path List -->
-    <div class="space-y-4 px-4">
-      <div v-for="item in pathItems" :key="item.id" class="bg-white p-4 rounded-lg shadow-sm">
-        <h3 class="text-xl font-medium mb-2">{{ item.title }}</h3>
-        <p class="text-sm text-gray-600 mb-4">{{ item.description }}</p>
-        <div class="flex items-center text-sm text-gray-500">
-          <span class="mr-4">{{ item.category }}</span>
-          <span class="flex items-center">
-            <EyeIcon class="w-4 h-4 mr-1" />
-            {{ item.views }}
-          </span>
-        </div>
+    <!-- Chat Area -->
+    <div class="flex-1 overflow-y-auto px-4 py-6 space-y-3" ref="chatArea">
+      <div
+        v-for="(message, index) in messages"
+        :key="index"
+        :class="[
+          'max-w-3/4 p-3 rounded-lg',
+          message.isUser ? 'ml-auto bg-blue-600 text-white' : 'bg-white text-gray-800 shadow-sm',
+        ]"
+      >
+        {{ message.content }}
+      </div>
+    </div>
+
+    <!-- Message Input -->
+    <div class="p-4 bg-white border-t fixed bottom-[56px] left-0 right-0 z-20">
+      <div class="flex space-x-2">
+        <input
+          v-model="userInput"
+          @keyup.enter="sendMessage"
+          type="text"
+          placeholder="Ask a question about the selected path..."
+          class="flex-1 px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          @click="sendMessage"
+          class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <SendIcon class="w-5 h-5" />
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { EyeIcon } from 'lucide-vue-next'
+import { ref, onMounted, nextTick } from 'vue'
+import { SendIcon } from 'lucide-vue-next'
+
+// Explicitly define the type of chatArea to HTMLElement | null
+const chatArea = ref<HTMLElement | null>(null)
 
 const selectedPath = ref('java')
+const userInput = ref('')
+const messages = ref([
+  { content: 'Welcome! How can I help you with your coding journey?', isUser: false },
+])
 
 const paths = [
   { id: 'java', name: 'Java' },
@@ -45,22 +70,36 @@ const paths = [
   { id: 'go', name: 'Go' },
 ]
 
-const pathItems = [
-  {
-    id: 1,
-    title: 'Java 校招/应届刷题知识路线',
-    description:
-      '扎实计算机网络、操作系统基础、Java基础、深入理解Java集合与并发、掌握Java虚拟机原理，以及熟悉常用的数据结构与算法',
-    category: 'Java刷题路线',
-    views: 3222,
-  },
-  {
-    id: 2,
-    title: 'Java 1-5 年刷题知识路线',
-    description:
-      '深入理解Java高级特性与并发编程、优化JVM性能、熟练使用Spring系列框架与微服务架构、优化数据库与缓存的使用',
-    category: 'Java刷题路线',
-    views: 2875,
-  },
-]
+const sendMessage = async () => {
+  // Validate user input
+  if (userInput.value.trim() === '') return
+
+  // Add user message and clear input
+  messages.value.push({ content: userInput.value, isUser: true })
+  userInput.value = ''
+
+  // Simulate AI response using Promise for better async handling
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      const aiResponse = `Here's some information about the ${selectedPath.value} path: ...`
+      messages.value.push({ content: aiResponse, isUser: false })
+      resolve(null)
+    }, 1000),
+  )
+
+  // Scroll to bottom after adding new messages
+  scrollToBottom()
+}
+
+const scrollToBottom = () => {
+  nextTick(() => {
+    chatArea.value?.scrollTo({ top: chatArea.value.scrollHeight, behavior: 'smooth' })
+  })
+}
+
+onMounted(scrollToBottom)
 </script>
+
+<style scoped>
+/* Add any additional styles here */
+</style>

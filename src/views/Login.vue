@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-50 px-4 py-8">
     <!-- Logo and Title -->
     <div class="text-center mb-12">
-      <h1 class="text-3xl font-bold mb-2">面试鸭</h1>
+      <h1 class="text-3xl font-bold mb-2">学习鸡</h1>
       <p class="text-gray-500">刷题学习提升能力</p>
     </div>
 
